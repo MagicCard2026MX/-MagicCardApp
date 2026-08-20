@@ -1,0 +1,532 @@
+html, body {
+
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  background: #000;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+
+/* =================================
+   ESCENARIO
+   ================================= */
+
+#stage {
+
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: #000;
+
+  overflow: hidden;
+}
+
+
+/* =================================
+   CUERDA
+   ================================= */
+
+#rope {
+
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 4px;
+  height: 80px;
+
+  background: #aaa;
+
+  transform: translateX(-50%);
+
+  transition:
+    height 1.8s ease-in-out;
+
+  z-index: 4;
+}
+
+
+/* =================================
+   GANCHO
+   ================================= */
+
+#hook {
+
+  position: absolute;
+
+  top: 65px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-size: 55px;
+
+  transition:
+    top 1.8s ease-in-out;
+
+  z-index: 10;
+}
+
+
+/* =================================
+   CARTA
+   ================================= */
+
+#card {
+
+  position: absolute;
+
+  top: 110%;
+
+  left: 50%;
+
+  width: 300px;
+  height: 428px;
+
+  transform: translateX(-50%);
+
+  transition:
+    top 1.8s ease-in-out;
+
+  z-index: 3;
+}
+
+
+/* =================================
+   CONTENEDOR
+   ================================= */
+
+.card-stack {
+
+  position: relative;
+
+  width: 300px;
+  height: 428px;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.8s ease;
+}
+
+
+/* =================================
+   CARTAS
+   ================================= */
+
+.card-image {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 300px;
+  height: 428px;
+
+  border-radius: 17px;
+
+  box-sizing: border-box;
+
+  background-size: 100% 100%;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+
+/* =================================
+   AZUL
+   ================================= */
+
+.blue-card {
+
+  background-image:
+    url("https://i.ibb.co/GvWHtsqK/IMG-8290.jpg");
+
+  border: 5px solid white;
+
+  z-index: 1;
+}
+
+
+/* =================================
+   ROJA
+   ================================= */
+
+.red-card {
+
+  background-image:
+    url("https://i.ibb.co/TB328bJN/IMG-8289.jpg");
+
+  border: 5px solid white;
+
+  z-index: 2;
+
+  overflow: hidden;
+}
+
+
+/* =================================
+   PINTURA AZUL
+   ================================= */
+
+.pintura-azul {
+
+  position: absolute;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  z-index: 5;
+
+  background-image:
+    url("https://i.ibb.co/GvWHtsqK/IMG-8290.jpg");
+
+  background-repeat: no-repeat;
+
+  background-size:
+    300px 428px;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+
+/* =================================
+   FRENTE
+   ================================= */
+
+.card-front {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 300px;
+  height: 428px;
+
+  border-radius: 17px;
+
+  background: white;
+
+  border: 3px solid #222;
+
+  box-sizing: border-box;
+
+  z-index: 3;
+
+  transform: rotateY(180deg);
+
+  backface-visibility: hidden;
+
+  overflow: hidden;
+}
+
+
+/* =================================
+   IMAGEN DE CARTA SELECCIONADA
+   ================================= */
+
+#selectedCardImage {
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: fill;
+
+  border: 0;
+
+  margin: 0;
+  padding: 0;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  -webkit-user-drag: none;
+
+  pointer-events: none;
+}
+
+
+/* =================================
+   VOLTEAR
+   ================================= */
+
+.card-stack.revealed {
+
+  transform:
+    rotateY(180deg);
+}
+
+
+/* =================================
+   PLUMÓN
+   ================================= */
+
+#marker {
+
+  position: absolute;
+
+  right: -165px;
+
+  top: 45%;
+
+  width: 145px;
+  height: 38px;
+
+  background: linear-gradient(
+    to right,
+    #222 0px,
+    #222 16px,
+    #e6e6e6 16px,
+    #ffffff 32px,
+    #f2f2f2 112px,
+    #222 112px,
+    #222 145px
+  );
+
+  border: 3px solid #111;
+
+  border-radius: 8px;
+
+  transform: rotate(-25deg);
+
+  z-index: 20;
+
+  display: none;
+
+  box-sizing: border-box;
+
+  touch-action: none;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+}
+
+
+/* =================================
+   PUNTA
+   ================================= */
+
+#marker::before {
+
+  content: "";
+
+  position: absolute;
+
+  left: -23px;
+  top: 5px;
+
+  width: 24px;
+  height: 24px;
+
+  background: #111;
+
+  border-radius:
+    50% 20% 20% 50%;
+}
+
+
+/* =================================
+   TINTA
+   ================================= */
+
+#marker::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: -32px;
+  top: 10px;
+
+  width: 14px;
+  height: 14px;
+
+  background: #174cff;
+
+  border-radius: 50%;
+}
+
+
+/* =================================
+   APARTADO SECRETO
+   ================================= */
+
+#cartasSecretas {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: #111;
+
+  z-index: 100;
+
+  display: none;
+
+  overflow-y: auto;
+}
+
+
+/* =================================
+   PANEL
+   ================================= */
+
+.panel-cartas {
+
+  width: 100%;
+  min-height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  box-sizing: border-box;
+
+  padding: 25px 15px 35px;
+}
+
+
+/* =================================
+   TÍTULO
+   ================================= */
+
+.titulo-cartas {
+
+  color: white;
+
+  font-size: 24px;
+
+  font-weight: bold;
+
+  margin-bottom: 25px;
+
+  text-align: center;
+}
+
+
+/* =================================
+   52 CARTAS
+   ================================= */
+
+#listaCartas {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 70px);
+
+  justify-content: center;
+
+  gap: 12px;
+
+  width: 100%;
+
+  max-width: 330px;
+}
+
+
+/* =================================
+   CARTA DEL APARTADO
+   ================================= */
+
+.carta-opcion {
+
+  width: 70px;
+  height: 98px;
+
+  background: white;
+
+  border: 2px solid #ccc;
+
+  border-radius: 6px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  overflow: hidden;
+}
+
+
+.carta-opcion:active {
+
+  transform:
+    scale(0.92);
+}
+
+
+.carta-opcion img {
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: fill;
+
+  display: block;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+.carta-roja {
+
+  color: #e00000;
+}
+
+
+.carta-negra {
+
+  color: #111;
+}
