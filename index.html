@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Card App</title>
+  
+  <!-- ENLACE AL ARCHIVO DE ESTILOS CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="stage">
+
+    <div id="rope"></div>
+
+    <div id="hook">🪝</div>
+
+    <div id="card">
+
+      <div class="card-stack">
+
+        <!-- CARTA AZUL -->
+        <div class="card-image blue-card"></div>
+
+        <!-- CARTA ROJA -->
+        <div
+          class="card-image red-card"
+          id="redCard">
+        </div>
+
+        <!-- FRENTE DE LA CARTA -->
+        <div class="card-front">
+
+          <img
+            id="selectedCardImage"
+            src=""
+            alt="Carta seleccionada"
+            draggable="false"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- PLUMÓN -->
+    <div id="marker"></div>
+
+
+    <!-- =================================
+         APARTADO SECRETO
+         ================================= -->
+
+    <div id="cartasSecretas">
+
+      <div class="panel-cartas">
+
+        <div class="titulo-cartas">
+          Selecciona una carta
+        </div>
+
+        <div id="listaCartas"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ENLACE AL ARCHIVO JAVASCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+</html>
